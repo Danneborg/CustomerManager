@@ -1,0 +1,10 @@
+table caption{
+    caption-side: top;
+}
+
+td.saveCustomer{
+    text-align: center;
+}
+td.saveCustomer input{
+    /*border: 1px solid #ff81c4;*/
+}
