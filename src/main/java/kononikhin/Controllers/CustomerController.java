@@ -1,8 +1,10 @@
 package kononikhin.Controllers;
 
+import kononikhin.DAO.RegisteredAddressDaO;
 import kononikhin.Entities.RegisteredAddress;
 import kononikhin.Entities.ActualAddress;
 import kononikhin.Entities.Customer;
+import kononikhin.Service.ActualAddressService;
 import kononikhin.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,12 @@ public class CustomerController {
 
     @Autowired
     CustomerService customerService;
+
+    @Autowired
+    ActualAddressService actualAddressService;
+
+    @Autowired
+    RegisteredAddressDaO registeredAddressDaO;
 
     @GetMapping("/list")
     public String listCustomers(Model model) {
@@ -50,9 +58,26 @@ public class CustomerController {
 
         Customer customer = customerService.getCustomer(customerId);
 
-        model.addAttribute("customer", customer);
+        ActualAddress actualAddress = actualAddressService.getActualAddress(customer.getActualAddress().getId());
+        RegisteredAddress registeredAddress = registeredAddressDaO.getRegisteredAddress(customer.getActualAddress().getId());
 
-        return "customerForm";
+        model.addAttribute("customer", customer);
+        model.addAttribute("actualAddress", actualAddress);
+        model.addAttribute("registeredAddress", registeredAddress);
+
+        return "updateForm";
+    }
+
+
+    @PostMapping("/saveCustomerWithAddress")
+    public String saveCustomerWithAddress(@ModelAttribute(name = "customer") Customer customer,
+                                          @ModelAttribute(name = "actualAddress") ActualAddress actualAddress,
+                                          @ModelAttribute(name = "registeredAddress") RegisteredAddress registeredAddress) {
+
+
+        customerService.saveCustomer(customer, actualAddress,registeredAddress);
+
+        return "redirect:/customer/list";
     }
 
 
@@ -60,10 +85,9 @@ public class CustomerController {
     public String saveCustomer(@ModelAttribute(name = "customer") Customer customer,
                                @ModelAttribute(name = "registeredAddress") RegisteredAddress registeredAddress,
                                @ModelAttribute(name = "actualAddress") ActualAddress actualAddress,
-                               @RequestParam(defaultValue = "false") boolean checkbox) {
+                               @RequestParam(name = "sameAddress", defaultValue = "false") boolean sameAddress) {
 
-
-        customerService.saveCustomer(customer,registeredAddress,actualAddress,checkbox);
+        customerService.saveCustomer(customer, registeredAddress, actualAddress, sameAddress);
 
         return "redirect:/customer/list";
     }

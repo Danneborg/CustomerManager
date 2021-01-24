@@ -1,17 +1,31 @@
-table caption{
+table caption {
     caption-side: top;
 }
 
-td.saveCustomer{
+td.saveCustomer {
     text-align: center;
 }
-td.saveCustomer input{
+
+td.saveCustomer input {
     /*border: 1px solid #ff81c4;*/
 }
-span{
+
+span {
     margin-left: 10px;
 }
-label{
+
+label {
     margin-bottom: 0;
 }
 
+#p2Fix {
+    width: 40%;
+}
+
+#actualAddressTable caption div {
+    display: inline;
+}
+
+#hiddenDiv {
+    visibility: hidden;
+}

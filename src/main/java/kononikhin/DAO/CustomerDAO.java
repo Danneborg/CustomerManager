@@ -18,4 +18,6 @@ public interface CustomerDAO {
     List<Customer> searchCustomers(String searchName);
 
     void save(Customer customer, RegisteredAddress registeredAddress, ActualAddress actualAddress, Boolean checkbox);
+
+    void save(Customer customer, ActualAddress actualAddress,RegisteredAddress registeredAddress);
 }

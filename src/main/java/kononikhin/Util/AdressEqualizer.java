@@ -10,7 +10,8 @@ public class AdressEqualizer {
     public AdressEqualizer() {
     }
 
-    public ActualAddress equalizeAddress(RegisteredAddress registeredAddress, ActualAddress actualAddress) {
+    public ActualAddress equalizeAddress(RegisteredAddress registeredAddress,ActualAddress actualAddress) {
+
 
         actualAddress.setContry(registeredAddress.getRegContry());
         actualAddress.setRegion(registeredAddress.getRegRegion());

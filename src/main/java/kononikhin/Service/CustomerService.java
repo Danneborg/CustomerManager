@@ -19,4 +19,6 @@ public interface CustomerService {
     List<Customer> searchCustomers(String searchName);
 
     void saveCustomer(Customer customer, RegisteredAddress registeredAddress, ActualAddress actualAddress,Boolean checkbox);
+
+    void saveCustomer(Customer customer, ActualAddress actualAddress,RegisteredAddress registeredAddress);
 }

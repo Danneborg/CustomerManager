@@ -1,11 +1,14 @@
 package kononikhin.DAO;
 
+import kononikhin.Entities.ActualAddress;
 import kononikhin.Entities.RegisteredAddress;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-public class AddressDAOImlp implements AddressDaO {
+@Repository
+public class RegisteredAddressDAOImlp implements RegisteredAddressDaO {
 
     @Autowired
     SessionFactory sessionFactory;
@@ -18,8 +21,9 @@ public class AddressDAOImlp implements AddressDaO {
     }
 
     @Override
-    public RegisteredAddress getCustomer(int addressId) {
+    public RegisteredAddress getRegisteredAddress(int addressId) {
         Session session = sessionFactory.getCurrentSession();
 
-        return session.get(RegisteredAddress.class, addressId);    }
+        return session.get(RegisteredAddress.class, addressId);
+    }
 }

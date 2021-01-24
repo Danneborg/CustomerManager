@@ -21,6 +21,9 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Autowired
     AdressEqualizer adressEqualizer;
 
+    @Autowired
+    RegisteredAddressDaO registeredAddressDaO;
+
     @Override
     public List<Customer> getCustomers() {
 
@@ -90,10 +93,32 @@ public class CustomerDAOImpl implements CustomerDAO {
         if (checkbox) {
             actualAddress = adressEqualizer.equalizeAddress(registeredAddress, actualAddress);
         }
-
         Session session = sessionFactory.getCurrentSession();
+
         customer.setRegisteredAddress(registeredAddress);
         customer.setActualAddress(actualAddress);
         session.persist(customer);
+    }
+
+    @Override
+    public void save(Customer customer, ActualAddress actualAddress,RegisteredAddress registeredAddress) {
+
+        Session session = sessionFactory.getCurrentSession();
+
+
+//        RegisteredAddress registeredAddress = registeredAddressDaO.getRegisteredAddress(tempCustomer.getRegisteredAddress().getRegId());
+
+//        customer.setActualAddress(actualAddress);
+
+//        customer.setRegisteredAddress(registeredAddress);
+
+        System.out.println(registeredAddress);
+        System.out.println(actualAddress);
+        System.out.println(customer);
+
+        session.save(customer);
+//        session.saveOrUpdate(actualAddress);
+
+//        session.persist(customer);
     }
 }

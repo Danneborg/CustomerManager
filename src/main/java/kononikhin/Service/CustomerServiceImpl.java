@@ -54,4 +54,11 @@ public class CustomerServiceImpl implements CustomerService {
 
        customerDAO.save(customer,registeredAddress,actualAddress,checkbox);
     }
+
+    @Override
+    @Transactional
+    public void saveCustomer(Customer customer, ActualAddress actualAddress,RegisteredAddress registeredAddress) {
+        customerDAO.save(customer,actualAddress,registeredAddress);
+
+    }
 }

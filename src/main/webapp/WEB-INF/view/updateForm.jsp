@@ -25,7 +25,7 @@
     </div>
     <div class="p-2">
 
-        <form action="saveCustomer" method="post">
+        <form action="saveCustomerWithAddress" method="post">
             <div class="d-flex justify-content-center">
                 <div class="p-2">
 
@@ -77,80 +77,12 @@
                     </table>
                 </div>
                 <div class="p-2">
-                    <spring:bind path="registeredAddress.regId">
-                        <input type="hidden" name="${status.expression}" value="${status.value}">
-                    </spring:bind>
-                    <table id="registeredAddressTable" class="table">
-                        <caption>Registered address info</caption>
-                        <tbody>
-                        <tr>
-                            <td><label>Country</label></td>
-                            <td>
-                                <spring:bind path="registeredAddress.regContry">
-                                    <input required name="${status.expression}" value="${status.value}">
-                                </spring:bind>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label>Region</label></td>
-                            <td>
-                                <spring:bind path="registeredAddress.regRegion">
-                                    <input required name="${status.expression}" value="${status.value}">
-                                </spring:bind>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label>City</label></td>
-                            <td>
-                                <spring:bind path="registeredAddress.regCity">
-                                    <input required name="${status.expression}" value="${status.value}">
-                                </spring:bind>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label>Street</label></td>
-                            <td>
-                                <spring:bind path="registeredAddress.regStreet">
-                                    <input required name="${status.expression}" value="${status.value}">
-                                </spring:bind>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label>House</label></td>
-                            <td>
-                                <spring:bind path="registeredAddress.regHouse">
-                                    <input required name="${status.expression}" value="${status.value}">
-                                </spring:bind>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td><label>Flat</label></td>
-                            <td>
-                                <spring:bind path="registeredAddress.regFlat">
-                                    <input required name="${status.expression}" value="${status.value}">
-                                </spring:bind>
-                            </td>
-                        </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-                <div id="p2Fix" class="p-2">
                     <spring:bind path="actualAddress.Id">
                         <input type="hidden" name="${status.expression}" value="${status.value}">
                     </spring:bind>
                     <table id="actualAddressTable" class="table">
                         <caption>
-                                <div><span>Actual address info</span></div>
-                                <div>
-                                    <span>
-                                        <label>
-                                            <input id='sameAddress' type="checkbox"
-                                                   name="sameAddress"><span>Адреса совпадают</span>
-                                        </label>
-                                     </span>
-                                </div>
+                            <span>Actual address info</span>
                         </caption>
                         <tbody>
                         <tr>
@@ -209,12 +141,90 @@
                             </td>
                         </tr>
 
+                        <tr>
+                            <td><label>Created date</label></td>
+                            <td>
+                                <spring:bind path="actualAddress.created">
+                                    <input disabled name="${status.expression}" value="${status.value}"><br/>
+                                </spring:bind>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Updated date</label></td>
+                            <td>
+                                <spring:bind path="actualAddress.modified">
+                                    <input disabled name="${status.expression}" value="${status.value}"><br/>
+                                </spring:bind>
+                            </td>
+                        </tr>
+
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="d-flex justify-content-center">
                 <input class="btn btn-light rounded m-2 border" type="submit" value="save">
+            </div>
+            <div id='hiddenDiv' class="p-2">
+                <spring:bind path="registeredAddress.regId">
+                    <input type="hidden" name="${status.expression}" value="${status.value}">
+                </spring:bind>
+                <table id="registeredAddressTable" class="table">
+                    <caption>Registered address info</caption>
+                    <tbody>
+                    <tr>
+                        <td><label>Country</label></td>
+                        <td>
+                            <spring:bind path="registeredAddress.regContry">
+                                <input required name="${status.expression}" value="${status.value}">
+                            </spring:bind>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Region</label></td>
+                        <td>
+                            <spring:bind path="registeredAddress.regRegion">
+                                <input required name="${status.expression}" value="${status.value}">
+                            </spring:bind>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>City</label></td>
+                        <td>
+                            <spring:bind path="registeredAddress.regCity">
+                                <input required name="${status.expression}" value="${status.value}">
+                            </spring:bind>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Street</label></td>
+                        <td>
+                            <spring:bind path="registeredAddress.regStreet">
+                                <input required name="${status.expression}" value="${status.value}">
+                            </spring:bind>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>House</label></td>
+                        <td>
+                            <spring:bind path="registeredAddress.regHouse">
+                                <input required name="${status.expression}" value="${status.value}">
+                            </spring:bind>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Flat</label></td>
+                        <td>
+                            <spring:bind path="registeredAddress.regFlat">
+                                <input required name="${status.expression}" value="${status.value}">
+                            </spring:bind>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
             </div>
         </form>
 
