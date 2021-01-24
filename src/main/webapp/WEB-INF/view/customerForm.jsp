@@ -28,7 +28,12 @@
         <form action="saveCustomer" method="post">
             <div class="d-flex justify-content-center">
                 <div class="p-2">
-                    <table class="table">
+
+                    <spring:bind path="customer.id">
+                        <input type="hidden" name="${status.expression}" value="${status.value}">
+                    </spring:bind>
+
+                    <table id="customerTable" class="table">
                         <caption>Customer info</caption>
 
                         <tbody>
@@ -60,7 +65,11 @@
                             <td><label>Sex</label></td>
                             <td>
                                 <spring:bind path="customer.Sex">
-                                    <input required name="${status.expression}" value="${status.value}">
+                                    <input id="customerSexHidden" hidden value="${status.value}" type="text">
+                                    <select name="${status.expression}" required id="customerSex">
+                                        <option>male</option>
+                                        <option>female</option>
+                                    </select>
                                 </spring:bind>
                             </td>
                         </tr>
@@ -68,7 +77,10 @@
                     </table>
                 </div>
                 <div class="p-2">
-                    <table class="table">
+                    <spring:bind path="registeredAddress.regId">
+                        <input type="hidden" name="${status.expression}" value="${status.value}">
+                    </spring:bind>
+                    <table id="registeredAddressTable" class="table">
                         <caption>Registered address info</caption>
                         <tbody>
                         <tr>
@@ -142,14 +154,26 @@
                     </table>
                 </div>
                 <div class="p-2">
-                    <table class="table">
-                        <caption>Actual address info</caption>
+                    <spring:bind path="actualAddress.Id">
+                        <input type="hidden" name="${status.expression}" value="${status.value}">
+                    </spring:bind>
+                    <table id="actualAddressTable" class="table">
+                        <caption>
+                            <span>Actual address info</span>
+                            <span>
+                                <label>
+                                    <input id='sameAddress' type="checkbox"
+                                           name="sameAddress"><span>Адреса совпадают</span>
+                                </label>
+                            </span>
+                        </caption>
                         <tbody>
                         <tr>
                             <td><label>Country</label></td>
                             <td>
                                 <spring:bind path="actualAddress.contry">
-                                    <input required name="${status.expression}" value="${status.value}">
+                                    <input class="ableToDisable" required name="${status.expression}"
+                                           value="${status.value}">
                                 </spring:bind>
                             </td>
                         </tr>
@@ -157,7 +181,8 @@
                             <td><label>Region</label></td>
                             <td>
                                 <spring:bind path="actualAddress.region">
-                                    <input required name="${status.expression}" value="${status.value}">
+                                    <input class="ableToDisable" required name="${status.expression}"
+                                           value="${status.value}">
                                 </spring:bind>
                             </td>
                         </tr>
@@ -165,7 +190,8 @@
                             <td><label>City</label></td>
                             <td>
                                 <spring:bind path="actualAddress.city">
-                                    <input required name="${status.expression}" value="${status.value}">
+                                    <input class="ableToDisable" required name="${status.expression}"
+                                           value="${status.value}">
                                 </spring:bind>
                             </td>
                         </tr>
@@ -173,7 +199,8 @@
                             <td><label>Street</label></td>
                             <td>
                                 <spring:bind path="actualAddress.street">
-                                    <input required name="${status.expression}" value="${status.value}">
+                                    <input class="ableToDisable" required name="${status.expression}"
+                                           value="${status.value}">
                                 </spring:bind>
                             </td>
                         </tr>
@@ -181,7 +208,8 @@
                             <td><label>House</label></td>
                             <td>
                                 <spring:bind path="actualAddress.house">
-                                    <input required name="${status.expression}" value="${status.value}">
+                                    <input class="ableToDisable" required name="${status.expression}"
+                                           value="${status.value}">
                                 </spring:bind>
                             </td>
                         </tr>
@@ -190,7 +218,8 @@
                             <td><label>Flat</label></td>
                             <td>
                                 <spring:bind path="actualAddress.flat">
-                                    <input required name="${status.expression}" value="${status.value}">
+                                    <input class="ableToDisable" required name="${status.expression}"
+                                           value="${status.value}">
                                 </spring:bind>
                             </td>
                         </tr>
@@ -236,5 +265,6 @@
 <script src="<c:url value="/resources/js/jquery.min.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/popper.min.js" />" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/customerForm.js" />" type="text/javascript"></script>
 </body>
 </html>

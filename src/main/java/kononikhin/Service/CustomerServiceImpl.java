@@ -1,7 +1,9 @@
 package kononikhin.Service;
 
 import kononikhin.DAO.CustomerDAO;
+import kononikhin.Entities.ActualAddress;
 import kononikhin.Entities.Customer;
+import kononikhin.Entities.RegisteredAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,5 +46,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Transactional
     public List<Customer> searchCustomers(String searchName) {
         return customerDAO.searchCustomers(searchName);
+    }
+
+    @Override
+    @Transactional
+    public void saveCustomer(Customer customer, RegisteredAddress registeredAddress, ActualAddress actualAddress,Boolean checkbox) {
+
+       customerDAO.save(customer,registeredAddress,actualAddress,checkbox);
     }
 }

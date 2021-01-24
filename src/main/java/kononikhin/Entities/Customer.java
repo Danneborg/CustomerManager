@@ -13,19 +13,19 @@ public class Customer {
     @OneToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "registred_address_id")
-    private RegisteredAddress registeredRegisteredAddress;
+    private RegisteredAddress registeredAddress;
 
     @OneToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "actual_address_id")
-    private ActualAddress actualRegisteredAddress;
+    private ActualAddress actualAddress;
 
     @Override
     public String toString() {
         return "Customer{" +
                 "id=" + id +
-                ", registeredRegisteredAddress=" + registeredRegisteredAddress +
-                ", actualRegisteredAddress=" + actualRegisteredAddress +
+                ", registeredRegisteredAddress=" + registeredAddress +
+                ", actualRegisteredAddress=" + actualAddress +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", middleName='" + middleName + '\'' +
@@ -33,20 +33,20 @@ public class Customer {
                 '}';
     }
 
-    public RegisteredAddress getRegisteredRegisteredAddress() {
-        return registeredRegisteredAddress;
+    public RegisteredAddress getRegisteredAddress() {
+        return registeredAddress;
     }
 
-    public void setRegisteredRegisteredAddress(RegisteredAddress registeredRegisteredAddress) {
-        this.registeredRegisteredAddress = registeredRegisteredAddress;
+    public void setRegisteredAddress(RegisteredAddress registeredRegisteredAddress) {
+        this.registeredAddress = registeredRegisteredAddress;
     }
 
-    public ActualAddress getActualRegisteredAddress() {
-        return actualRegisteredAddress;
+    public ActualAddress getActualAddress() {
+        return actualAddress;
     }
 
-    public void setActualRegisteredAddress(ActualAddress actualRegisteredAddress) {
-        this.actualRegisteredAddress = actualRegisteredAddress;
+    public void setActualAddress(ActualAddress actualRegisteredAddress) {
+        this.actualAddress = actualRegisteredAddress;
     }
 
     @Column(name = "first_name")

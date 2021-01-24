@@ -58,14 +58,12 @@ public class CustomerController {
 
     @PostMapping("/saveCustomer")
     public String saveCustomer(@ModelAttribute(name = "customer") Customer customer,
-                               @ModelAttribute(name = "registeredAddress") RegisteredAddress registeredAbstractAddress,
-                               @ModelAttribute(name = "actualAddress") ActualAddress actualAbstractAddress) {
+                               @ModelAttribute(name = "registeredAddress") RegisteredAddress registeredAddress,
+                               @ModelAttribute(name = "actualAddress") ActualAddress actualAddress,
+                               @RequestParam(defaultValue = "false") boolean checkbox) {
 
-//        customerService.saveCustomer(customer);
 
-        System.out.println(customer);
-        System.out.println(registeredAbstractAddress);
-        System.out.println(actualAbstractAddress);
+        customerService.saveCustomer(customer,registeredAddress,actualAddress,checkbox);
 
         return "redirect:/customer/list";
     }

@@ -1,7 +1,11 @@
 package kononikhin.Entities;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "address")
@@ -30,11 +34,31 @@ public class RegisteredAddress {
     @Column(name = "flat")
     private String regFlat;
 
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created")
-    private java.sql.Timestamp regCreated;
+    private java.util.Date regCreated;
 
+    public Date getRegCreated() {
+        return regCreated;
+    }
+
+    public void setRegCreated(Date regCreated) {
+        this.regCreated = regCreated;
+    }
+
+    public Date getRegModified() {
+        return regModified;
+    }
+
+    public void setRegModified(Date regModified) {
+        this.regModified = regModified;
+    }
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified")
-    private java.sql.Timestamp regModified;
+    private java.util.Date regModified;
 
     public RegisteredAddress() {
     }
@@ -106,21 +130,6 @@ public class RegisteredAddress {
         this.regFlat = flat;
     }
 
-    public Timestamp getRegCreated() {
-        return regCreated;
-    }
-
-    public void setRegCreated(Timestamp created) {
-        this.regCreated = created;
-    }
-
-    public Timestamp getRegModified() {
-        return regModified;
-    }
-
-    public void setRegModified(Timestamp modified) {
-        this.regModified = modified;
-    }
 
     @Override
     public String toString() {

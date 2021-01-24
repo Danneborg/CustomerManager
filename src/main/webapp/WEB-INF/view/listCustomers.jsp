@@ -60,8 +60,8 @@
                     <td>${tempCustomer.lastName}</td>
                     <td>${tempCustomer.middleName}</td>
                     <td>${tempCustomer.sex}</td>
-                    <td>${tempCustomer.actualRegisteredAddress.id}</td>
-                    <td>${tempCustomer.registeredRegisteredAddress.regId}</td>
+                    <td>${tempCustomer.actualAddress.id}</td>
+                    <td>${tempCustomer.registeredAddress.regId}</td>
                     <td><a href="${updateLink}">Update</a>
                         |
                         <a class="deleteLink" href="${deleteLink}">Delete</a>

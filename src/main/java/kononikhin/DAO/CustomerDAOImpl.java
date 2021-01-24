@@ -1,6 +1,9 @@
 package kononikhin.DAO;
 
+import kononikhin.Entities.ActualAddress;
 import kononikhin.Entities.Customer;
+import kononikhin.Entities.RegisteredAddress;
+import kononikhin.Util.AdressEqualizer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -14,6 +17,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Autowired
     SessionFactory sessionFactory;
+
+    @Autowired
+    AdressEqualizer adressEqualizer;
 
     @Override
     public List<Customer> getCustomers() {
@@ -76,5 +82,18 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         // return the results
         return customers;
+    }
+
+    @Override
+    public void save(Customer customer, RegisteredAddress registeredAddress, ActualAddress actualAddress, Boolean checkbox) {
+
+        if (checkbox) {
+            actualAddress = adressEqualizer.equalizeAddress(registeredAddress, actualAddress);
+        }
+
+        Session session = sessionFactory.getCurrentSession();
+        customer.setRegisteredAddress(registeredAddress);
+        customer.setActualAddress(actualAddress);
+        session.persist(customer);
     }
 }
