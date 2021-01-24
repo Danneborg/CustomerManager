@@ -105,21 +105,12 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         Session session = sessionFactory.getCurrentSession();
 
-
-//        RegisteredAddress registeredAddress = registeredAddressDaO.getRegisteredAddress(tempCustomer.getRegisteredAddress().getRegId());
-
         customer.setActualAddress(actualAddress);
 
         customer.setRegisteredAddress(registeredAddress);
 
-        System.out.println(registeredAddress);
-        System.out.println(actualAddress);
-        System.out.println(customer);
-
-//        session.save(customer);
         session.saveOrUpdate(actualAddress);
         session.saveOrUpdate(customer);
 
-//        session.persist(customer);
     }
 }
