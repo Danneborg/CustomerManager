@@ -39,6 +39,10 @@ public class RegisteredAddress {
     @Column(name = "created")
     private java.util.Date regCreated;
 
+    @OneToOne(mappedBy = "registeredAddress",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private Customer customer;
+
     public Date getRegCreated() {
         return regCreated;
     }
@@ -72,6 +76,14 @@ public class RegisteredAddress {
         this.regFlat = regFlat;
         this.regCreated = regCreated;
         this.regModified = regModified;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public int getRegId() {

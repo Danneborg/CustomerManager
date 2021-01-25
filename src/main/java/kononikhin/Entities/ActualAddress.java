@@ -44,6 +44,18 @@ public class ActualAddress {
     @Column(name = "modified")
     private java.util.Date modified;
 
+    @OneToOne(mappedBy = "actualAddress",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private Customer customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     public ActualAddress() {
     }
 
@@ -129,7 +141,6 @@ public class ActualAddress {
     public void setFlat(String flat) {
         this.flat = flat;
     }
-
 
 
     @Override

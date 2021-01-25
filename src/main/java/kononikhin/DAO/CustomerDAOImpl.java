@@ -101,14 +101,16 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public void save(Customer customer, ActualAddress actualAddress,RegisteredAddress registeredAddress) {
+    public void save(Customer customer, ActualAddress actualAddress, RegisteredAddress registeredAddress) {
 
         Session session = sessionFactory.getCurrentSession();
 
         customer.setActualAddress(actualAddress);
 
         customer.setRegisteredAddress(registeredAddress);
+//        session.saveOrUpdate(customer);
 
+//        session.persist(customer);
         session.saveOrUpdate(actualAddress);
         session.saveOrUpdate(customer);
 
